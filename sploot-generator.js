@@ -1,15 +1,16 @@
 
 const getDna = require('./libs/dna');
 
+// DNA: 3 body, 3 mind, 3 soul.
 const splooterBase = {
     name: "Unrevealed Splooter",
     dna: [0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
-const generateSplooter = async function () {
+const generateSplooter = async function (splootId) {
 
     let splooter = JSON.parse(JSON.stringify(splooterBase));
-    splooter.dna = getDna();
+    splooter.dna = getDna(splootId);
 
     return splooter;
 }
@@ -20,7 +21,7 @@ const generateMetadata = async function () {
     let splooterList = [];
 
     for (let i = 0; i < numSplooters; i++) {
-        const newSplooter = await generateSplooter();
+        const newSplooter = await generateSplooter(i);
         splooterList.push(newSplooter);
     }
 
