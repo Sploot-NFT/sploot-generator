@@ -18,7 +18,7 @@ $: node sploot-generator.js
 #### raw dna numbers
 three types of dna rolls, based on affinities:
 - standard:  `random(min,max)`
-- advantaged:  `random(min,max)` or `random(min,max)`, whichever is higest.
+- advantaged:  `random(min,max)` or `random(min,max)`, whichever is highest.
 - disadvantaged:  `random(min,max)` or `random(min,max)`, whichever is lowest.
 
 #### affinities
