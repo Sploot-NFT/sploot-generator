@@ -12,7 +12,7 @@ dna.dnaCode = ["Athletic", "Vitality", "Combat", "Entertainer", "Artistry", "Tha
 
 
 dna.getDna = function (splootId) {
-    var dnaRng = seedrandom(splootId + dna.blockHash);
+    let dnaRng = seedrandom(splootId + dna.blockHash);
 
     // determine rarity.
     let rarityRoll = dnaRng();

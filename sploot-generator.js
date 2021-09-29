@@ -1,5 +1,13 @@
+const fs = require('fs');
 
 const dna = require('./libs/dna');
+const utils = require('./libs/utils');
+const names = require('./libs/names');
+const persona = require('./libs/persona');
+
+const minStatScore = 1;
+const maxStatScore = 10;
+const maxSplooters = 1000;
 
 // DNA: 3 body, 3 mind, 3 soul.
 const splooterBase = {
@@ -107,6 +115,10 @@ const splooterBase = {
         {
             trait_type: "Class",
             value: ""
+        },
+        {
+            trait_type: "Affinity",
+            value: ""
         }
     ],
     image: ""
@@ -118,20 +130,41 @@ const generateSplooter = async function (splootId) {
     let splooter = JSON.parse(JSON.stringify(splooterBase));
     splooter.dna = dna.getDna(splootId);
 
+    // construct stats.
+    splooter = generateStats(splooter);
+
+    // fetch name.
+    splooter.name = names.getName(splooter);
+
+    // fetch persona information.
+    splooter = utils.setAttribute(splooter, "Personality", persona.getPersonality(splooter));
+    splooter = utils.setAttribute(splooter, "Phobia", persona.getPhobia(splooter));
+    splooter = utils.setAttribute(splooter, "Vice", persona.getVice(splooter));
+    splooter = utils.setAttribute(splooter, "Role", persona.getRole(splooter));
+    splooter = utils.setAttribute(splooter, "Class", persona.getClass(splooter));
+
+    return splooter;
+}
+
+
+const generateStats = function (splooter) {
+    for (let i = 0; i < splooter.dna.length; i++) {
+        splooter.attributes[i].value = Math.round(splooter.dna[i].scale * (maxStatScore - minStatScore)) + minStatScore;
+    }
+
+    let affinity = utils.getAffinity(splooter);
+    splooter = utils.setAttribute(splooter, "Affinity", affinity);
+
     return splooter;
 }
 
 
 const generateMetadata = async function () {
-    const numSplooters = 3;
-    let splooterList = [];
-
-    for (let i = 0; i < numSplooters; i++) {
+    for (let i = 0; i < maxSplooters; i++) {
+        const metadataPath = `./metadata/${i}.json`;
         const newSplooter = await generateSplooter(i);
-        splooterList.push(newSplooter);
+        fs.writeFileSync(metadataPath, JSON.stringify(newSplooter));
     }
-
-    console.log(JSON.stringify(splooterList));
 }
 
 generateMetadata();
