@@ -7,7 +7,7 @@ const persona = require('./libs/persona');
 
 const minStatScore = 1;
 const maxStatScore = 10;
-const maxSplooters = 1000;
+const maxSplooters = 10000;
 
 // DNA: 3 body, 3 mind, 3 soul.
 const splooterBase = {
