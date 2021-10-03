@@ -18,12 +18,12 @@ dna.getDna = function (splootId) {
     let rarityRoll = dnaRng();
     let dnaBase = 0;
     let rarityDigit = 0;
-    if (rarityRoll > .85) {
-        dnaBase = .3; // specialized
-        rarityDigit = 10;
-    } else if (rarityRoll > .99) {
+    if (rarityRoll > .99) {
         dnaBase = .6; // unique
         rarityDigit = 100;
+    } else if (rarityRoll > .85) {
+        dnaBase = .3; // specialized
+        rarityDigit = 10;
     }
 
     // determine affinity.
