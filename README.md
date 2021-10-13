@@ -10,7 +10,7 @@ to use:
 $: node sploot-generator.js
 ```
 
-3) the metadata file will appear in `./output`
+3) the metadata files will appear in `./metadata`
 
 
 ## Notes
@@ -37,3 +37,13 @@ the numbers above 1 are where the affinity was the higher number.
 #### about dna
 once we have the dna, we can base everything off there.  we'll round the float part for stats.  we can use the whole number as a "affinity color flag".  with just dna, we can actually mint the nfts, and everything else is derivable.
 
+
+#### about roles
+
+initially, the breakdown  of splooter roles is:
+- 45% superfans
+- 30% players
+- 20% staff
+- 5% management
+
+characters can change their roles.

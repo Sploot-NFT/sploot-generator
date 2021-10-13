@@ -3,7 +3,7 @@ const seedrandom = require('./seedrandom');
 let dna = {};
 
 // we're gonna use block hashes for our seeds.
-dna.blockHash = "0xa669da6a6e173402b09ad61b9a0dd61b2ab9066a924f49eef0ea12444151832a";
+dna.blockHash = "some random blockhash 01";
 
 // formatted like a color wheel:  https://upload.wikimedia.org/wikipedia/commons/3/38/BYR_color_wheel.svg
 dna.dnaFocusColors = ["#FE2712", "#0247FE", "#FEFE33"] // 3 primary colors.  body=red, mind=blue, soul=yellow

@@ -5,6 +5,22 @@ utils.pullFromBag = function (bag, rng) {
     return bag[Math.floor(rng() * bag.length)];
 }
 
+utils.pullFromWeightedBag = function (bag, curveWeight, rng) {
+    // bigger the curveWeight, the more extras added.
+    // const curveWeight = .3;
+    const uniqueCount = bag.length;
+    let newBag = JSON.parse(JSON.stringify(bag));
+
+    for (let i = 0; i < uniqueCount; i++) {
+        let extras = Math.round((uniqueCount - i) * curveWeight);
+        for (let e = 0; e < extras; e++) {
+            newBag.push(bag[i])
+        }
+    }
+
+    return utils.pullFromBag(newBag, rng);
+}
+
 utils.isUnique = function (splooter) {
     for (let i = 0; i < splooter.dna.length; i++) {
         if (splooter.dna[i].code >= 100) {

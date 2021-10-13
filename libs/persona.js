@@ -34,22 +34,23 @@ persona.getRole = function (splooter) {
     let roleRng = seedrandom(roleSeed);
     let roleRoll = roleRng();
 
-    let role = "Staff";
+    let role = "Superfan";
 
-    if (roleRoll > .95) {
+    if (roleRoll > .97) {
         role = "Management";
 
-    } else if (roleRoll > .6) {
+    } else if (roleRoll > .8) {
         role = "Staff";
 
-    } else if (roleRoll > .4) {
+    } else if (roleRoll > .3) {
         role = "Superfan";
 
     } else {
-        if (playerCount < maxTeams * playersPerTeam) {
-            role = utils.pullFromBag(data.playerRoles, roleRng);
-            playerCount += 1;
-        }
+        // if (playerCount < maxTeams * playersPerTeam) {
+        //     role = "Player";
+        //     playerCount += 1;
+        // }
+        role = "Player";
     }
 
     return role;
@@ -63,16 +64,16 @@ persona.getClass = function (splooter) {
     let charClass;
 
     if (role == "Management") {
-        charClass = utils.pullFromBag(data.managementClasses, classRng);
+        charClass = utils.pullFromWeightedBag(data.managementClasses, 1, classRng);
 
     } else if (role == "Staff") {
         charClass = utils.pullFromBag(data.staffClasses, classRng);
 
     } else if (role == "Superfan") {
-        charClass = utils.pullFromBag(data.fanClasses, classRng);
+        charClass = utils.pullFromWeightedBag(data.fanClasses, .4, classRng);
 
     } else {
-        charClass = "Player";
+        charClass = utils.pullFromWeightedBag(data.playerClasses, 1, classRng);
     }
 
     return charClass;
