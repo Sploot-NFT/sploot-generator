@@ -17,11 +17,15 @@ let directorCount = 0;
 let playerCount = 0;
 
 persona.getPhobia = function (splooter) {
-    return "None";
+    let phobiaSeed = splooter.name + utils.getAttribute(splooter, "Personality") + "phobia";
+    let phobiaRng = seedrandom(phobiaSeed);
+    return utils.pullFromBag(data.phobias, phobiaRng);
 }
 
 persona.getVice = function (splooter) {
-    return "None";
+    let viceSeed = splooter.name + utils.getAttribute(splooter, "Personality") + "vice";
+    let viceRng = seedrandom(viceSeed);
+    return utils.pullFromBag(data.vices, viceRng);
 }
 
 persona.getPersonality = function (splooter) {

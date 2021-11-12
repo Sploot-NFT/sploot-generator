@@ -138,6 +138,8 @@ const generateSplooter = async function (splootId) {
 
     // fetch persona information.
     splooter = utils.setAttribute(splooter, "Personality", persona.getPersonality(splooter));
+
+    // NOTE:  personality and name defines stuff following.
     splooter = utils.setAttribute(splooter, "Phobia", persona.getPhobia(splooter));
     splooter = utils.setAttribute(splooter, "Vice", persona.getVice(splooter));
     splooter = utils.setAttribute(splooter, "Role", persona.getRole(splooter));
