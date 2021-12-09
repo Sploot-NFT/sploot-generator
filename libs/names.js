@@ -18,10 +18,10 @@ names.getName = function (splooter) {
     let firstNameRng = seedrandom(splooter.dna[6].code + splooter.dna[7].code + splooter.dna[8].code);
     firstNameRoll = firstNameRng();
 
-    if (firstNameRoll > .9) {
+    if (firstNameRoll > .8) {
         firstName = utils.pullFromBag(data.weirdNames, firstNameRng);
 
-    } else if (firstNameRoll > .6) {
+    } else if (firstNameRoll > .4) {
         firstName = utils.pullFromBag(data.uncommonFirstNames, firstNameRng);
 
     } else {
@@ -33,10 +33,10 @@ names.getName = function (splooter) {
     let lastNameRng = seedrandom(splooter.dna[3].code + splooter.dna[4].code + splooter.dna[5].code);
     lastNameRoll = lastNameRng();
 
-    if (lastNameRoll > .9) {
+    if (lastNameRoll > .8) {
         lastName = utils.pullFromBag(data.weirdNames, lastNameRng);
 
-    } else if (lastNameRoll > .6) {
+    } else if (lastNameRoll > .4) {
         lastName = utils.pullFromBag(data.uncommonLastNames, lastNameRng);
 
     } else {
