@@ -1,6 +1,8 @@
 
 let utils = {};
 
+utils.uniqueCount = 0;
+
 utils.pullFromBag = function (bag, rng) {
     return bag[Math.floor(rng() * bag.length)];
 }
@@ -24,6 +26,8 @@ utils.pullFromWeightedBag = function (bag, curveWeight, rng) {
 utils.isUnique = function (splooter) {
     for (let i = 0; i < splooter.dna.length; i++) {
         if (splooter.dna[i].code >= 100) {
+            utils.uniqueCount += 1;
+            // console.log("uniques:", utils.uniqueCount);
             return true;
         }
     }
@@ -61,6 +65,10 @@ utils.getAttribute = function (splooter, attribute) {
         }
     }
     return "";
+}
+
+utils.dedupe = function (arr) {
+    return Array.from(new Set(arr));
 }
 
 module.exports = utils;

@@ -93,7 +93,7 @@ const splooterBase = {
             value: 0
         },
         {
-            trait_type: "Agility",
+            trait_type: "Reflexes",
             value: 0
         },
         {

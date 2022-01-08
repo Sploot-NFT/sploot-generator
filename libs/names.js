@@ -21,7 +21,7 @@ names.getName = function (splooter) {
     if (firstNameRoll > .8) {
         firstName = utils.pullFromBag(data.weirdNames, firstNameRng);
 
-    } else if (firstNameRoll > .4) {
+    } else if (firstNameRoll > .25) {
         firstName = utils.pullFromBag(data.uncommonFirstNames, firstNameRng);
 
     } else {
@@ -36,7 +36,7 @@ names.getName = function (splooter) {
     if (lastNameRoll > .8) {
         lastName = utils.pullFromBag(data.weirdNames, lastNameRng);
 
-    } else if (lastNameRoll > .4) {
+    } else if (lastNameRoll > .25) {
         lastName = utils.pullFromBag(data.uncommonLastNames, lastNameRng);
 
     } else {
@@ -59,6 +59,8 @@ names.getUniqueName = function () {
         returnName = utils.pullFromBag(data.uncommonFirstNames, rng) + " " + utils.pullFromBag(data.weirdNames, rng);
         uniqueNameIndex += 1;
     }
+
+    // console.log("unique name:", uniqueNameIndex, returnName);
 
     return returnName;
 }
