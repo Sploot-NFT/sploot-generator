@@ -128,11 +128,11 @@ persona.getClass = function (splooter) {
 
 persona.getCount = function (countRng) {
     let countRoll = countRng();
-    let count = 1;
+    let count = 3;
     if (countRoll > .999) {
         count = 0;
     } else if (countRoll > .99) {
-        count = 3;
+        count = 1;
     } else if (countRoll > .65) {
         count = 2;
     }
